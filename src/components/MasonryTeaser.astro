@@ -1,0 +1,56 @@
+---
+const {
+    title,
+    url = "#",
+    description = "",
+    image = "/src/imgs/compressed/ocre.jpg"
+} = Astro.props;
+
+---
+
+<a href={url} class="teaser body-m">
+    <img src={image}>
+    <div class="title">{title}</div>
+</a>
+
+<style>
+    .teaser {
+        width: 100%;
+        color: var(--color-text-primary);
+        text-decoration: none;
+        font-size: var(--font-size-300);
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    .teaser:hover {
+        text-decoration: underline;
+    }
+
+
+    .image {
+        margin-bottom: 0px;
+        width: 100%;
+        aspect-ratio: 4/3;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: var(--border-radius-100);
+    }
+
+    .title {
+        text-align: center;
+        vertical-align: middle;
+        width: 100%;
+        line-height: 40px;
+        color: black;
+        position: absolute;
+        top: -24px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .title:hover{
+        text-decoration: underline;
+    }
+
+</style>

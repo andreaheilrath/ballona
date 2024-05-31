@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import Teaser from "./MasonryTeaser.astro";  
+const allPosts = await Astro.glob("../pages/posts/*.mdx");
+---
+
+<script>
+import { masonry } from 'masonry-layout';
+</script>
+
+<div class="grid" data-masonry='{"gutter": 10, "columnWidth": 360, "itemSelector": ".grid-item" }'>
+  <div class="teaser-grid">
+    {
+        allPosts.map((post) => (
+        <div class="grid-item">
+            <Teaser
+                url={post.url}
+                title={post.frontmatter.title}
+                description={post.frontmatter.description}
+                image={post.frontmatter.image}
+            />
+          </div>
+        ))
+    }
+</div>
+
+<style>
+* { box-sizing: border-box; }
+body { font-family: sans-serif; }
+
+.grid {
+  max-width: 1200px;
+}
+
+.grid:after { }
+
+.grid-item {
+  width: 360px;
+  float: left;
+  margin-bottom: 2px;
+}
+
+.grid-item--height1 { height: 180px; }
+
+</style>
+
+

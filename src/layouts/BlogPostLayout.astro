@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const {frontmatter} = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+        <div class="content-container">
+            <slot />
+        </div>
+</BaseLayout>
+
+
+<style>
+    .content-container{
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+    }
+</style>

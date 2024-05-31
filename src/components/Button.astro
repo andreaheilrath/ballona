@@ -1,0 +1,29 @@
+---
+const {text = 'Label', url = '#'} = Astro.props;
+
+const buttonStyle = 'button';
+---
+
+<a href={url} class={buttonStyle}>{text}</a>
+
+<style>
+    .button {
+        padding: var(--spacing-200) var(--spacing-400);
+        border-radius: var(--border-radius-300);
+        text-decoration: none;
+        font-size: var(--font-size-400);
+        font-weight: var(--font-weight-bold);
+        background-color: var(--color-background-primary);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border-primary);
+        transition: all 0.1s ease-in-out;
+    }
+
+    .button:hover {
+        cursor: pointer;
+        background-color: var(--color-background-emphasis);
+        color: var(--color-text-on-emphasis);
+        transform: scale(1.08);
+    }
+
+</style>

@@ -1,0 +1,69 @@
+---
+import Teaser from "./TeaserMatthi.astro";
+
+const allPosts = await Astro.glob("../pages/posts/*.mdx");
+
+/* Choose posts and in which order to display them */
+const selectedPosts = [
+    "Location",
+    "Installation",
+    "Wildlife",
+    "History",
+    "Recordings",
+    "Restoration",
+];
+
+/* Filter the posts by the selected posts */
+const filteredPosts = allPosts.filter((post) =>
+    selectedPosts.includes(post.frontmatter.title)
+);
+
+
+/* Sort the posts by the order of the selected posts */
+const sortedPosts = filteredPosts.sort(
+    (a, b) =>
+        selectedPosts.indexOf(a.frontmatter.title) -
+        selectedPosts.indexOf(b.frontmatter.title)
+);
+
+---
+
+<div class="teaser-grid">
+    {
+        sortedPosts.map((post) => (
+            <Teaser
+                url={post.url}
+                title={post.frontmatter.title}
+                description={post.frontmatter.description}
+                image={post.frontmatter.image}
+            />
+        ))
+    }
+</div>
+
+<style>
+    .teaser-grid {
+        width: 100%;
+        max-width: 1300px;
+        padding-top: 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 22px;
+
+    }
+
+
+    @media (max-width: 1000px){
+        .teaser-grid{
+            padding-top: 0px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+        .teaser-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

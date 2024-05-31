@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 2rem 0;
+    overflow-wrap: break-word;
+  }
+
+a {
+    color: #0969da;
+}
+
+a:hover {
+    text-decoration: None;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 0px;
+    margin: 0px;
+}
+
+/* Register your custom font family and tell the browser where to find it. */
+@font-face {
+    font-family: 'REM';
+    src: url('/fonts/REM/REM-VariableFont_wght.ttf')
+}
+@font-face {
+    font-family: 'Lora';
+    src: url('/fonts/Lora/Lora-VariableFont_wght.ttf')
+}

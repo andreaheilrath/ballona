@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import MasonryGrid from "../components/MasonryGrid.astro";
+import TeaserGrid from "../components/TeaserGrid.astro";
+
+const pageTitle = "Listening to Ballona";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="text">
+        explores the intersection of science and art through the use of long-term bioacoustic recordings from the Ballona Wetlands, which visitors can listen to by generating power through pedaling a bicycle. 
+        The project underscores the irony of human progress, achieved at the expense of environmental degradation, and reflects on the potential erosion of knowledge due to unreliable future conditions. 
+    </div>
+        <TeaserGrid />
+</BaseLayout>
+
+<style>
+    .text {
+        width: 100%;
+        padding-bottom: 20px;
+        max-width: 1200px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+</style>

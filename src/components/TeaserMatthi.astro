@@ -1,0 +1,50 @@
+---
+const {
+    title,
+    url = "#",
+    description = "",
+    image = "/src/imgs/compressed/ocre.jpg"
+} = Astro.props;
+
+import { Image } from 'astro:assets';
+
+import type { ImageMetadata } from 'astro';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/imgs/compressed/*.{jpeg,jpg,png,gif}');
+if (!images[image]) throw new Error(`"${image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+
+---
+
+<a href={url} class="teaser body-m">
+        <Image src={images[image]()} alt={"altText"} />
+         <div class="title">{title}</div>
+</a>
+
+<style>
+    .teaser {
+        width: 100%;
+        color: var(--color-text-primary);
+        text-decoration: none;
+        font-size: var(--font-size-300);
+        margin-bottom: 0;
+        height: auto;
+    }
+
+    .teaser:hover {
+        text-decoration: underline;
+    }
+
+    img{
+        margin-bottom: 8px;
+        height: auto;
+        object-fit: contain;
+    }
+    .image {
+
+    }
+
+    .title {
+        text-align: center;
+    }
+
+</style>
